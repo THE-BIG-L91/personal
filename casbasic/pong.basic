@@ -1,0 +1,81 @@
+ClrText
+24=>PADX
+24=>PADY
+0=>Ps
+0=>Plrs
+
+2=>BallX
+0=>BallY
+1=>Bdx
+1=>Bdy
+14=>BndX
+14=>BndY
+
+1=>Act
+Pause
+
+ClrText
+Locate 128,32, " PONG"
+Locate 105,42, "---------"
+Locate 90,90, ">  Press START"
+
+Do
+GetKey LKey
+LpWhile not (LKey=13)
+
+While Act=1
+ClrText
+GetKey Ky
+If Ky = 56
+Then
+If Plrs-1 =\= 0
+Then
+Plrs-1=>Plrs
+IfEnd
+ElseIf Ky = 50
+Then
+If Plrs+1 =\= (BndY-1)
+Then
+Plrs+1=>Plrs
+IfEnd
+IfEnd
+
+If BallY>Ps and Ps+1 =\= BndY-1
+Then
+Ps+1 => Ps
+ElseIf BallY<Ps and Ps-1 =\=
+Then
+Ps-1=>Ps
+IfEnd
+
+If BallX+Bdx = 11
+Then
+
+If abs(BallY-Ps)<=1
+Then
+-1 => Bdx
+IfEnd
+
+If BallY+Bdy = BndY
+Then
+-1 => Bdy
+
+Elseif BallY+Bdy = -1
+Then
+1=>Bdy
+IfEnd
+
+BallX+Bdx => BallX
+BallY+Bdy => BallY
+
+Locate PADX, PADY + 16x(Plrs-1), ⬛
+Locate PADX, PADY + 16x(Plrs), ⬛
+Locate PADX, PADY + 16x(Plrs+1), ⬛
+
+
+Locate PADX + 15x16, PADY + 16x(Ps-1), ⬜
+Locate PADX + 15x16, PADY + 16x(Ps), ⬜
+Locate PADX, + 15x16PADY + 16x(Ps+1), ⬜
+
+Locate PADX + 16x(BallX), PADY + 16x(BallY), ⚫
+WhileEnd

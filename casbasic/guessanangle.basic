@@ -1,0 +1,98 @@
+SetStandard
+ClrText
+0=>Strk
+0=>Cort
+0=>Incra
+
+Goto Main
+
+Lbl GetAngl
+rand(1,5)=>Ang
+switch Ang
+Case 1:
+pi=>Angl
+Break
+Case 2:
+Pi/2=>Angl
+Break
+Case 3:
+Pi/4=>Angl
+Break
+Case 4:
+Pi/6=>Angl
+Case 5:
+Pi/3=>Angl
+Break
+SwitchEnd
+Goto RetGA
+
+Lbl GetQuad
+rand(1,4)=>Ang
+Switch Ang
+Case 1
+2pi => Quad
+Break
+Case 2:
+pi/2=>Quad
+Break
+Case 3:
+Pi=>Quad
+Break
+Case 4
+3pi/2 =>Quad
+Break
+SwitchEnd
+Goto RetGQ
+
+Lbl Main
+0=>Angl
+0=>Quad
+1=>Sgn
+Lbl RgQ
+Goto GetAngl
+Lbl RetGA
+Goto GetQuad
+Lbl RetGQ
+rand(0,1)=>Sg
+If (Sg = 0)
+Then
+-1 => Sg
+IfEnd
+Quad + Sgn x Angl => QAng
+Print "Angle:"
+Print QAng
+rand(1,3)=>flg
+Switch flg
+Case 1
+sin(QAng)=>CAns
+Input Answ,"sin"
+Break
+Case 2
+cos(QAng)=>CAns
+Input Answ,"cos"
+Break
+Case 3
+tan(QAng)=>CAns
+Input Answ,"tan"
+Break
+SwitchEnd
+If (Answ=CAns)
+Then
+Strk+1=>Strk
+Cort+1=>Cort
+Else
+Incra+1=>Incra
+0=>Strk
+IfEnd
+ClrText
+
+Print "Answer:"
+Print CAns
+GetKey Tmp
+Print "Streak:"
+Print Strk
+Print "Correct:"
+Print Cort
+Print "Incorrect:"
+Print Incra
+Goto Main
