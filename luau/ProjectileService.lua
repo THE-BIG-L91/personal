@@ -92,7 +92,7 @@ function ProjectileService:fire(origin: Vector3, direction: Vector3)
 	end)
 end
 
-function ProjectileService.createLauncher(gunType, ammoType) -- Name is misleading; this creates a launcher
+function ProjectileService.createLauncher(gunType, ammoType)
 	local self = setmetatable(ProjectileService,{})
 
 	self:init(gunType, ammoType)
