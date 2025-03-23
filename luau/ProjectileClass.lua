@@ -73,7 +73,7 @@ function projectile:applyConstForce(name, force)
 	self.constForces[name] = force
 end
 
-function projectile:applyImpulse(impulse) -- tba use a mutex
+function projectile:applyImpulse(impulse) -- This will be fixed in time :)
 	self.vel += (impulse/self.mass)
 end
 
